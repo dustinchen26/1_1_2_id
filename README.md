@@ -1,6 +1,6 @@
 # NR_gNBId_CellId_nRPCI_nRTCI_calculator
 
-● online_calculator : https://dustinchen26.github.io/id
+● online_calculator : https://dustinchen26.github.io/1_1_2_id
 
 ## Process
 ```
