@@ -97,6 +97,19 @@ nRTCI= (gNBId                 cellLocalId )  nRPCI      padding
             display: inline;
             margin-right: 10px;
         }
+
+        .red-text{
+        color:red;
+        }
+
+        .green-text{
+        color:green;
+        }
+		
+        .blue-text{
+        color:blue;
+        }		
+		
     </style>
 </head>
 <body>
@@ -155,6 +168,10 @@ nRTCI= (gNBId                 cellLocalId )  nRPCI      padding
     
     <button onclick="calculate()">Calculate</button>
 
+<div>
+<h3>CalculationProcess</h3>
+<pre id="calculationProcess"></pre>
+</div>
     <div>
         <h3>CU_xml</h3>
         <pre id="cuXml"></pre>
@@ -233,6 +250,21 @@ nRTCI= (gNBId                 cellLocalId )  nRPCI      padding
             
             console.log('Cell 2 fullBinary2:', fullBinary2);
             console.log('Cell 2 nRTCI2:', nRTCI2);
+            // Display calculation process
+            const calculationProcess = `
+【Cell 1】
+            gNBId: <span class="red-text">${gNBIdBinary1}</span>
+            cellLocalId: <span class="green-text">${cellLocalIdBinary1}</span>
+            nRPCI: <span class="blue-text">${nRPCIBinary1}</span>
+            =>nRTCI: <span class="red-text">${gNBIdBinary1}</span> <span class="green-text">${cellLocalIdBinary1}</span> <span class="blue-text">${nRPCIBinary1}</span> ${paddingBinary1} = ${nRTCI1}
+            =>nrCellId: <span class="red-text">${gNBIdBinary1}</span> <span class="green-text">${cellLocalIdBinary1}</span> = ${toHexString(gNBIdBinary1 + cellLocalIdBinary1)}
+【Cell 2】
+            gNBId: <span class="red-text">${gNBIdBinary2}</span>
+            cellLocalId: <span class="green-text">${cellLocalIdBinary2}</span>
+            nRPCI: <span class="blue-text">${nRPCIBinary2}</span>
+            =>nRTCI: <span class="red-text">${gNBIdBinary2}</span> <span class="green-text">${cellLocalIdBinary2}</span> <span class="blue-text">${nRPCIBinary2}</span> ${paddingBinary2} = ${nRTCI2}
+            =>nrCellId: <span class="red-text">${gNBIdBinary2}</span> <span class="green-text">${cellLocalIdBinary2}</span> = ${toHexString(gNBIdBinary2 + cellLocalIdBinary2)}
+			`;
             
             // Generate XML outputs
             const cuXml = `
@@ -308,6 +340,7 @@ nRTCI= (gNBId                 cellLocalId )  nRPCI      padding
 `;
             
             // Display results
+            document.getElementById('calculationProcess').innerHTML = calculationProcess.trim();
             document.getElementById('cuXml').textContent = cuXml.trim();
             document.getElementById('duXml').textContent = duXml.trim();
         }
